@@ -13,6 +13,7 @@
     "update": "ncu -i",
     "prebuild": "cpx \"src/static/**\" dist -C"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ken7253/qkd.git"
