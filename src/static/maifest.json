@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "version": "0.0.0",
+  "short_name": "qkd",
+  "name": "quick documents",
+  "background": {
+    "service_worker": "js/background.js"
+  },
+  "action": {
+    "default_popup": "index.html"
+  },
+  "options_ui": {
+    "page": "index.html"
+  },
+  "host_permissions": [
+    "https://*/*"
+  ]
+}
