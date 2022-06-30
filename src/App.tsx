@@ -1,9 +1,11 @@
 import React from "react";
+import DocumentSearch from "./components/DocumentSearch";
 
 const App: React.FC = () => {
   return (
     <>
-      <p>test</p>
+      <DocumentSearch></DocumentSearch>
+      <p className="test">test</p>
       <style jsx global>{`
         body {
           width: 350px;
