@@ -30,17 +30,45 @@ const SelectProvider:React.FC = () => {
   ];
 
   return (
-    <>
+    <div className="select-provider">
       {provider.map((item) => {
         return (
           <label key={item.name}>
             <input type="radio" name="provider" value={item.name}></input>
-            {item.displayName || item.name}
+            <span>{item.displayName || item.name}</span>
           </label>
         )
       })}
-      <style jsx>{``}</style>
-    </>
+      <style jsx>{`
+        .select-provider {
+          width: 100%;
+          display: flex;
+          justify-content: space-around;
+          gap: 8px;
+          margin: 25px 0;
+        }
+        label {
+          position: relative;
+          padding: 4px 24px;
+          border: solid 1px #333;
+          background-color: #fff;
+        }
+        input {
+          position: absolute;
+          display: block;
+          margin: 0;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 0;
+          z-index: -1;
+        }
+        input:checked + span {
+          color: red;
+        }
+      `}</style>
+    </div>
   );
 }
 
