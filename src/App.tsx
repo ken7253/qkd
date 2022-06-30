@@ -1,13 +1,11 @@
 import React from "react";
-import DocumentSearch from "./components/DocumentSearch";
-import SelectProvider from "./components/SelectProvider";
+import Contents from "./components/Contents";
 import Footer from "./components/Footer";
 
 const App: React.FC = () => {
   return (
     <div>
-      <DocumentSearch />
-      <SelectProvider />
+      <Contents />
       <Footer />
       <style jsx global>{`
         body {
