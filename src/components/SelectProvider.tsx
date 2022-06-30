@@ -82,8 +82,8 @@ const SelectProvider:React.FC<Props> = (props:Props) => {
         label {
           position: relative;
           padding: 4px 24px;
-          border: solid 1px #333;
-          background-color: #fff;
+          border: solid 1px var(--c-dark);
+          background-color: var(--c-lightest);
         }
         input {
           position: absolute;
@@ -95,6 +95,9 @@ const SelectProvider:React.FC<Props> = (props:Props) => {
           height: 100%;
           border-radius: 0;
           z-index: -1;
+        }
+        span {
+          color: var(--c-darker);
         }
         input:checked + span {
           color: red;

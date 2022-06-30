@@ -32,9 +32,13 @@ const DocumentSearch:React.FC<Props> = (props: Props) => {
         }
         a {
           text-decoration: none;
-          border: solid 1px #333;
+          border: solid 1px var(--c-darker);
           padding: 4px 24px;
-          color: #333;
+          color: var(--c-darker);
+          opacity: .5;
+        }
+        a[href] {
+          opacity: 1;
         }
       `}</style>
     </div>
