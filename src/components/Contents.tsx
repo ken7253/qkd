@@ -4,7 +4,7 @@ import SelectProvider from "./SelectProvider";
 
 const Contents = () => {
 
-  const [url, setURL] = useState<URL>();
+  const [url, setURL] = useState<URL | undefined>();
 
   const getURL = (select:URL) => {
     setURL(select);
@@ -12,7 +12,7 @@ const Contents = () => {
 
   return (
     <main>
-      <DocumentSearch />
+      <DocumentSearch searchURL={url} />
       <SelectProvider onChangeProvider={getURL}/>
     </main>
   );

@@ -52,7 +52,7 @@ const SelectProvider:React.FC<Props> = (props:Props) => {
       })
 
       if (!item) return;
-      const absolute = new URL(`${URL_SCHEMA}${item.baseURL}&${item.query}`);
+      const absolute = new URL(`${URL_SCHEMA}${item.baseURL}?${item.query}`);
       setURL(absolute);
 
       if(onChangeProvider) {
