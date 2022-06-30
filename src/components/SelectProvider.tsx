@@ -34,7 +34,7 @@ const SelectProvider:React.FC = () => {
       {provider.map((item, index) => {
         return (
           <label key={item.name}>
-            <input type="radio" name="provider" value={item.name} checked={index === 0}></input>
+            <input type="radio" name="provider" value={item.name} defaultChecked={index === 0}></input>
             <span>{item.displayName || item.name}</span>
           </label>
         )
