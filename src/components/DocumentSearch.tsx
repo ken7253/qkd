@@ -21,7 +21,7 @@ const DocumentSearch:React.FC<Props> = (props: Props) => {
 
   return (
     <div className="document-search">
-      <input type="search" onChange={(e) => changeHandler(e)} placeholder={searchURL?.toString()}></input>
+      <input type="search" onChange={(e) => changeHandler(e)} placeholder={searchURL?.toString()} autoFocus></input>
       <a href={link} target="_blank">Search</a>
       <style jsx>{`
         .document-search {
