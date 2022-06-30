@@ -8,6 +8,10 @@
   --c-dark-static: #444;
   --c-darker-static: #333;
   --c-darkest-static: #222;
+  --c-theme-main: #dbb574;
+  --c-theme-dark: #8f713d;
+  --c-theme-light: #f5eedd;
+  --c-theme-sub: #8adbda;
   --c-brand-mdn: #5e9eff;
   --c-brand-zenn: #3ea8ff;
   --c-brand-qiita: #55c500;
@@ -33,7 +37,7 @@ html.dark {
 
 body {
   width: 350px;
-  height: 550px;
+  height: fit-content;
   margin: 0;
 }
 
@@ -41,5 +45,5 @@ body {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows: 1fr 25px;
+  grid-template-rows: 50px 1fr 25px;
 }

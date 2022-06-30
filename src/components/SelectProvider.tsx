@@ -80,10 +80,14 @@ const SelectProvider:React.FC<Props> = (props:Props) => {
           margin: 25px 0;
         }
         label {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           position: relative;
-          padding: 4px 24px;
-          border: solid 1px var(--c-dark);
-          background-color: var(--c-lightest);
+          min-width: 80px;
+          min-height: 25px;
+          border: solid 2px var(--c-theme-dark);
+          border-radius: 5px;
         }
         input {
           position: absolute;
@@ -94,13 +98,20 @@ const SelectProvider:React.FC<Props> = (props:Props) => {
           width: 100%;
           height: 100%;
           border-radius: 0;
-          z-index: -1;
         }
         span {
-          color: var(--c-darker);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          color: var(--c-theme-light);
+          font-weight: 700;
+          background-color: var(--c-theme-main);
         }
         input:checked + span {
-          color: red;
+          background-color: var(--c-theme-dark);
+          color: var(--c-theme-light);
         }
       `}</style>
     </div>

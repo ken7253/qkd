@@ -16,8 +16,8 @@ const Footer:React.FC = () => {
           padding-left: var(--l-safe-padding);
           padding-right: var(--l-safe-padding);
           padding-bottom: 5px;
-          background-color: var(--c-darker-static);
-          color: var(--c-lighter-static);
+          background-color: var(--c-theme-dark);
+          color: var(--c-theme-light);
         }
         ul {
           display: flex;
