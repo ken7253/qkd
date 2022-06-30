@@ -56,7 +56,6 @@ const SelectProvider:React.FC<Props> = (props:Props) => {
   }
 
   useEffect(() => {
-    console.log('mount');
     if (onChangeProvider) onChangeProvider(current);
 
     return (() => { if (onChangeProvider) onChangeProvider(undefined)})

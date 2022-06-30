@@ -8,7 +8,6 @@ const Contents = () => {
 
   const getURL = (select:URL | undefined) => {
     setURL(select);
-    console.log(`call => ${select}`);
   }
 
   return (
