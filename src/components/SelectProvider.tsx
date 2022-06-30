@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 
 type providerList = Provider[];
 
@@ -11,7 +11,9 @@ interface Provider {
 };
 
 const SelectProvider:React.FC = () => {
-  const provider:providerList = [
+  const URL_SCHEMA = 'https://';
+
+  const providerList:providerList = [
     {
       name: 'mdn',
       baseURL: 'developer.mozilla.org/ja/search',
@@ -29,12 +31,30 @@ const SelectProvider:React.FC = () => {
     }
   ];
 
+  const [provider, setProvider] = useState(providerList[0].name);
+  const [url, setURL] = useState<URL>();
+
+  const changeHandler = (e:ChangeEvent) => {
+    if (e.target instanceof HTMLInputElement) {
+      const current = e.target.value;
+      setProvider(current);
+      const item = providerList.find((value) => {
+        if (e.target instanceof HTMLInputElement) {
+          return value.name === e.target.value;
+        }
+      })
+      if (!item) return;
+      const absolute = new URL(`${URL_SCHEMA}${item.baseURL}&${item.query}`);
+      setURL(absolute);
+    }
+  }
+
   return (
     <div className="select-provider">
-      {provider.map((item, index) => {
+      {providerList.map((item, index) => {
         return (
           <label key={item.name}>
-            <input type="radio" name="provider" value={item.name} defaultChecked={index === 0}></input>
+            <input type="radio" name="provider" value={item.name} defaultChecked={index === 0} onChange={changeHandler}></input>
             <span>{item.displayName || item.name}</span>
           </label>
         )
