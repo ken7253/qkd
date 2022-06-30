@@ -6,8 +6,9 @@ const Contents = () => {
 
   const [url, setURL] = useState<URL | undefined>();
 
-  const getURL = (select:URL) => {
+  const getURL = (select:URL | undefined) => {
     setURL(select);
+    console.log(`call => ${select}`);
   }
 
   return (

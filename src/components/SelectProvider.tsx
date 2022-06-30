@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState, useEffect } from "react";
 
 type providerList = Provider[];
 
@@ -11,14 +11,10 @@ interface Provider {
 };
 
 interface Props {
-  onChangeProvider?: (select: URL) => void;
+  onChangeProvider?: (select: URL | undefined) => void;
 }
 
 const SelectProvider:React.FC<Props> = (props:Props) => {
-  const { onChangeProvider } = props;
-
-  const URL_SCHEMA = 'https://';
-
   const providerList:providerList = [
     {
       name: 'mdn',
@@ -37,14 +33,15 @@ const SelectProvider:React.FC<Props> = (props:Props) => {
     }
   ];
 
+  const { onChangeProvider } = props;
+
+  const URL_SCHEMA = 'https://';
+
+  const [current, setCurrent] = useState<URL>(new URL(`${URL_SCHEMA}${providerList[0].baseURL}?${providerList[0].query}`));
   const [provider, setProvider] = useState(providerList[0].name);
-  const [url, setURL] = useState<URL>();
 
   const changeHandler = (e:ChangeEvent) => {
     if (e.target instanceof HTMLInputElement) {
-      const current = e.target.value;
-
-      setProvider(current);
       const item = providerList.find((value) => {
         if (e.target instanceof HTMLInputElement) {
           return value.name === e.target.value;
@@ -53,20 +50,24 @@ const SelectProvider:React.FC<Props> = (props:Props) => {
 
       if (!item) return;
       const absolute = new URL(`${URL_SCHEMA}${item.baseURL}?${item.query}`);
-      setURL(absolute);
-
-      if(onChangeProvider) {
-        onChangeProvider(absolute);
-      }
+      setCurrent(absolute);
+      if (onChangeProvider) onChangeProvider(absolute);
     }
   }
 
+  useEffect(() => {
+    console.log('mount');
+    if (onChangeProvider) onChangeProvider(current);
+
+    return (() => { if (onChangeProvider) onChangeProvider(undefined)})
+  }, [])
+
   return (
     <div className="select-provider">
-      {providerList.map((item, index) => {
+      {providerList.map((item) => {
         return (
           <label key={item.name}>
-            <input type="radio" name="provider" value={item.name} defaultChecked={index === 0} onChange={changeHandler}></input>
+            <input type="radio" name="provider" value={item.name} defaultChecked={item.name === provider} onChange={changeHandler}></input>
             <span>{item.displayName || item.name}</span>
           </label>
         )
