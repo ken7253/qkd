@@ -1,13 +1,23 @@
-import React, {useState} from "react";
+import React, {ChangeEvent, useState} from "react";
 
 const DocumentSearch:React.FC = () => {
 
   const [word, setWord] = useState('');
 
+  const [link, setLink] = useState('');
+
+  const changeHandler = (e:ChangeEvent) => {
+    if (e.target instanceof HTMLInputElement) {
+      const safeText = encodeURI(e.target.value);
+      console.log(word);
+      setWord(safeText);
+    }
+  }
+
   return (
     <div className="document-search">
-      <input type="search" onChange={(e) => {setWord(e.target.value)}}></input>
-      <a href="/" target="_blank">Search</a>
+      <input type="search" onChange={(e) => changeHandler(e)}></input>
+      <a href="link" target="_blank">Search</a>
       <style jsx>{`
         .document-search {
           display: flex;
