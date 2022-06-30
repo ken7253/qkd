@@ -10,7 +10,13 @@ interface Provider {
   color?: string,
 };
 
-const SelectProvider:React.FC = () => {
+interface Props {
+  onChangeProvider?: (select: URL) => void;
+}
+
+const SelectProvider:React.FC<Props> = (props:Props) => {
+  const { onChangeProvider } = props;
+
   const URL_SCHEMA = 'https://';
 
   const providerList:providerList = [
@@ -37,15 +43,21 @@ const SelectProvider:React.FC = () => {
   const changeHandler = (e:ChangeEvent) => {
     if (e.target instanceof HTMLInputElement) {
       const current = e.target.value;
+
       setProvider(current);
       const item = providerList.find((value) => {
         if (e.target instanceof HTMLInputElement) {
           return value.name === e.target.value;
         }
       })
+
       if (!item) return;
       const absolute = new URL(`${URL_SCHEMA}${item.baseURL}&${item.query}`);
       setURL(absolute);
+
+      if(onChangeProvider) {
+        onChangeProvider(absolute);
+      }
     }
   }
 
