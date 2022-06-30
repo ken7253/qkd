@@ -6,9 +6,9 @@ import Footer from "./components/Footer";
 const App: React.FC = () => {
   return (
     <div>
-      <DocumentSearch></DocumentSearch>
-      <SelectProvider></SelectProvider>
-      <Footer></Footer>
+      <DocumentSearch />
+      <SelectProvider />
+      <Footer />
       <style jsx global>{`
         body {
           width: 350px;
