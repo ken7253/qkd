@@ -7,7 +7,7 @@ const DocumentSearch:React.FC = () => {
   return (
     <div className="document-search">
       <input type="search" onChange={(e) => {setWord(e.target.value)}}></input>
-      <button>Search</button>
+      <a href="/" target="_blank">Search</a>
       <style jsx>{`
         .document-search {
           display: flex;
@@ -15,8 +15,11 @@ const DocumentSearch:React.FC = () => {
           gap: 8px;
           margin: 25px 0;
         }
-        button {
-          appearance: none;
+        a {
+          text-decoration: none;
+          border: solid 1px #333;
+          padding: 4px 24px;
+          color: #333;
         }
       `}</style>
     </div>
