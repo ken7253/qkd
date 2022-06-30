@@ -1,0 +1,22 @@
+:root {
+  --c-light: #ccc;
+  --c-lighter: #ddd;
+  --c-lightest: #eee;
+  --c-white: #fff;
+  --c-dark: #444;
+  --c-darker: #333;
+  --c-darkest: #222;
+  --c-black: #000;
+  --c-brand-mdn: #5e9eff;
+  --c-brand-zenn: #3ea8ff;
+  --c-brand-qiita: #55c500;
+}
+
+html.dark {
+  --c-dark: #ccc;
+  --c-darker: #ddd;
+  --c-darkest: #eee;
+  --c-light: #444;
+  --c-lighter: #333;
+  --c-lightest: #222;
+}
