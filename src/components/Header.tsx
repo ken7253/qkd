@@ -6,6 +6,8 @@ const Header:React.FC = () => {
       <h1>Quick Docs</h1>
       <style jsx>{`
         header {
+          display: flex;
+          align-items: center;
           width: 100%;
           padding-left: var(--l-safe-padding);
           padding-right: var(--l-safe-padding);
