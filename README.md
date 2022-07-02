@@ -3,6 +3,7 @@
 </div>
 
 # Quick Docs
+![](https://github.com/ken7253/qkd/actions/workflows/lint.yml/badge.svg)
 
 chrome extension to search technical articles.
 
