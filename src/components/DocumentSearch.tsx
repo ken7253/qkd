@@ -27,18 +27,20 @@ const DocumentSearch: React.FC<Props> = (props: Props) => {
       </a>
       <style jsx>{`
         .document-search {
-          display: flex;
-          justify-content: space-between;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
           gap: 8px;
           margin: 25px 0;
         }
         input[type='search'] {
+          grid-column: 1 / 3;
           border-radius: 100vh;
           border: solid 2px var(--c-dark);
           padding: 8px 16px;
           font-size: 1rem;
         }
         a {
+          grid-column: 3 / 4;
           display: flex;
           justify-content: center;
           align-items: center;

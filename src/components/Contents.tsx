@@ -17,7 +17,7 @@ const Contents = () => {
       </main>
       <style jsx>{`
         main {
-          padding: 0 var(--l-safe-padding);
+          padding: 10px var(--l-safe-padding);
         }
       `}</style>
     </>

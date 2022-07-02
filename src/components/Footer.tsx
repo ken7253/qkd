@@ -29,9 +29,7 @@ const Footer: React.FC = () => {
           display: flex;
           justify-content: space-between;
           align-items: flex-end;
-          padding-left: var(--l-safe-padding);
-          padding-right: var(--l-safe-padding);
-          padding-bottom: 5px;
+          padding: 8px var(--l-safe-padding);
           background-color: var(--c-theme-dark);
           color: var(--c-theme-light);
         }
@@ -44,6 +42,8 @@ const Footer: React.FC = () => {
         }
         a {
           color: inherit;
+          line-height: 1;
+          text-underline-offset: 1px;
         }
       `}</style>
     </footer>
