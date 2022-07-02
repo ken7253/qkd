@@ -1,8 +1,10 @@
+<p align="center">
+<img src="/src/static/img/icon.svg" width="100" height="100">
+</div>
+
 # Quick Docs
 
 chrome extension to search technical articles.
-
-![](https://raw.githubusercontent.com/ken7253/qkd/main/src/static/img/icon.svg)
 
 ## support provider
 
