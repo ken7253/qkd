@@ -19,4 +19,4 @@ chrome extension to search technical articles.
 
 ## Licence
 
-[MIT](./LICENSE)
+[![Licence MIT](https://img.shields.io/github/license/ken7253/qkd?style=flat-square)](./LICENSE)
