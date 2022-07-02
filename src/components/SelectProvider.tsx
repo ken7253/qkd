@@ -35,10 +35,15 @@ const SelectProvider:React.FC<Props> = (props:Props) => {
 
   const { onChangeProvider } = props;
 
-  const URL_SCHEMA = 'https://';
+  const URL_SCHEMA = 'https://' as const;
+  const COOKIE_NAME = 'selectedProvider' as const;
+  const getDefaultProvider = ():string | undefined => {
+    const rawCookie = document.cookie;
+    return rawCookie.split('; ').find(row => row.startsWith(COOKIE_NAME))?.split('=')[1];
+  }
 
   const [current, setCurrent] = useState<URL>(new URL(`${URL_SCHEMA}${providerList[0].baseURL}?${providerList[0].query}`));
-  const [provider, setProvider] = useState(providerList[0].name);
+  const [provider, setProvider] = useState(getDefaultProvider() || providerList[0].name);
 
   const changeHandler = (e:ChangeEvent) => {
     if (e.target instanceof HTMLInputElement) {
@@ -50,8 +55,9 @@ const SelectProvider:React.FC<Props> = (props:Props) => {
 
       if (!item) return;
       const absolute = new URL(`${URL_SCHEMA}${item.baseURL}?${item.query}`);
+      setProvider(item.name);
       setCurrent(absolute);
-      if (onChangeProvider) onChangeProvider(absolute);
+      if (onChangeProvider) { onChangeProvider(absolute) };
     }
   }
 
@@ -59,7 +65,12 @@ const SelectProvider:React.FC<Props> = (props:Props) => {
     if (onChangeProvider) onChangeProvider(current);
 
     return (() => { if (onChangeProvider) onChangeProvider(undefined)})
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    /** @todo Retains side effects and should be considered for modification. */
+    document.cookie = `${COOKIE_NAME}=${provider}`;
+  }, [provider])
 
   return (
     <div className="select-provider">
