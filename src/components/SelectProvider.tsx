@@ -103,7 +103,7 @@ const SelectProvider: React.FC<Props> = (props: Props) => {
         .select-provider {
           width: 100%;
           display: flex;
-          justify-content: space-around;
+          justify-content: space-between;
           gap: 8px;
           margin: 25px 0;
         }
@@ -111,6 +111,7 @@ const SelectProvider: React.FC<Props> = (props: Props) => {
           position: relative;
           min-height: 30px;
           min-width: 80px;
+          width: 100%;
         }
         input {
           position: absolute;
@@ -132,6 +133,7 @@ const SelectProvider: React.FC<Props> = (props: Props) => {
           color: var(--c-theme-light);
           border-radius: 5px;
           font-weight: 700;
+          font-size: 1rem;
           background-color: var(--c-theme-main);
         }
         input:checked + span {

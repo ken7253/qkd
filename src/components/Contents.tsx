@@ -10,10 +10,17 @@ const Contents = () => {
   };
 
   return (
-    <main>
-      <DocumentSearch searchURL={url} />
-      <SelectProvider onChangeProvider={getURL} />
-    </main>
+    <>
+      <main>
+        <DocumentSearch searchURL={url} />
+        <SelectProvider onChangeProvider={getURL} />
+      </main>
+      <style jsx>{`
+        main {
+          padding: 0 var(--l-safe-padding);
+        }
+      `}</style>
+    </>
   );
 };
 

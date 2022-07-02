@@ -24,6 +24,8 @@
   --c-lightest: var(--c-lightest-static);
   /* layout */
   --l-safe-padding: 10px;
+  /* fonts */
+  --font-jp: "BIZ UDPGothic", "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
 }
 
 html.dark {
@@ -46,4 +48,5 @@ body {
   height: 100%;
   display: grid;
   grid-template-rows: 50px 1fr 25px;
+  font-family: var(--font-jp);
 }

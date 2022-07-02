@@ -28,17 +28,27 @@ const DocumentSearch: React.FC<Props> = (props: Props) => {
       <style jsx>{`
         .document-search {
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
           gap: 8px;
           margin: 25px 0;
         }
+        input[type='search'] {
+          border-radius: 100vh;
+          border: solid 2px var(--c-dark);
+          padding: 8px 16px;
+          font-size: 1rem;
+        }
         a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           text-decoration: none;
           border: solid 2px var(--c-theme-dark);
           background-color: var(--c-theme-main);
           color: var(--c-theme-light);
           padding: 4px 24px;
           opacity: 0.5;
+          border-radius: 100vh;
         }
         a[href] {
           opacity: 1;
