@@ -10,6 +10,7 @@
     "watch:copy": "cpx \"src/static/**\" dist --watch",
     "build:ts": "webpack --config webpack.prod.js",
     "lint:ts": "eslint src",
+    "lint:types": "tsc --noEmit",
     "update": "ncu -i",
     "prebuild": "cpx \"src/static/**\" dist -C"
   },
