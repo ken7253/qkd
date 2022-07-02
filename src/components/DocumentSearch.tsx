@@ -1,28 +1,30 @@
-import React, {ChangeEvent, useState} from "react";
+import React, { ChangeEvent, useState } from 'react';
 
 interface Props {
   searchURL: URL | undefined;
 }
 
-const DocumentSearch:React.FC<Props> = (props: Props) => {
+const DocumentSearch: React.FC<Props> = (props: Props) => {
   const { searchURL } = props;
 
   const [word, setWord] = useState('');
 
-  const link = (searchURL && word) ? `${searchURL.toString()}${word}` : undefined;
+  const link = searchURL && word ? `${searchURL.toString()}${word}` : undefined;
 
-  const changeHandler = (e:ChangeEvent) => {
+  const changeHandler = (e: ChangeEvent) => {
     if (e.target instanceof HTMLInputElement) {
       const safeText = encodeURI(e.target.value);
       console.log(word);
       setWord(safeText);
     }
-  }
+  };
 
   return (
     <div className="document-search">
       <input type="search" onChange={(e) => changeHandler(e)} autoFocus></input>
-      <a href={link} target="_blank" rel="noreferrer">Search</a>
+      <a href={link} target="_blank" rel="noreferrer">
+        Search
+      </a>
       <style jsx>{`
         .document-search {
           display: flex;
@@ -36,7 +38,7 @@ const DocumentSearch:React.FC<Props> = (props: Props) => {
           background-color: var(--c-theme-main);
           color: var(--c-theme-light);
           padding: 4px 24px;
-          opacity: .5;
+          opacity: 0.5;
         }
         a[href] {
           opacity: 1;
@@ -44,6 +46,6 @@ const DocumentSearch:React.FC<Props> = (props: Props) => {
       `}</style>
     </div>
   );
-}
+};
 
 export default DocumentSearch;
