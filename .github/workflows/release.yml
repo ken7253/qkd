@@ -9,12 +9,17 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    - uses: actions/setup-node@v3.3.0
+    - name: Install modules
+      run: npm ci
+    - name: build
+      run: npm run build
     steps:
       - uses: actions/checkout@v3
       - id: packExtensionDir
         uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
         with:
-          extensionDir: "."
+          extensionDir: "./dist"
           zipFilePath: "build/qkd.zip"
 
       - uses: cardinalby/webext-buildtools-chrome-crx-action@v2
