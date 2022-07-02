@@ -17,6 +17,5 @@
   "options_ui": {
     "page": "index.html"
   },
-  "permissions": [],
-  "host_permissions": ["<all_urls>"]
+  "permissions": []
 }
