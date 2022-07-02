@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "short_name": "qkd",
-  "name": "quick documents",
+  "name": "Quick Docs",
   "description": "主にWeb系の技術情報をスピーディーに探す拡張機能です",
   "icons": {
     "16": "img/icon-16.png",
