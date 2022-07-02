@@ -2,6 +2,8 @@
 
 chrome extension to search technical articles.
 
+![](https://raw.githubusercontent.com/ken7253/qkd/main/src/static/img/icon.svg)
+
 ## support provider
 
 - [MDN](https://developer.mozilla.org/ja/docs/Web)
