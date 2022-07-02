@@ -7,6 +7,17 @@
 
 chrome extension to search technical articles.
 
+## Install
+
+[Chrome Web Store]()
+
+### Manual install
+
+1. Open the [Release page](https://github.com/ken7253/qkd/releases)
+2. Download zip file and Unzip
+3. Open extensions `chrome://extensions/` **Require Dev mode**
+4. Loading Extensions by *Load unpacked*
+
 ## support provider
 
 - [MDN](https://developer.mozilla.org/ja/docs/Web)
