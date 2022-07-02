@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-const Header:React.FC = () => {
-  const {version, name} = chrome.runtime.getManifest();
+const Header: React.FC = () => {
+  const { version, name } = chrome.runtime.getManifest();
 
-  return(
+  return (
     <header>
       <img src="/img/icon.svg" alt="" height="48" width="48" />
       <h1>{name}</h1>
@@ -29,11 +29,11 @@ const Header:React.FC = () => {
         }
         small {
           align-self: flex-end;
-          letter-spacing: .1em;
+          letter-spacing: 0.1em;
         }
       `}</style>
     </header>
-  )
-}
+  );
+};
 
 export default Header;

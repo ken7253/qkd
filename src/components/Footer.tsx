@@ -1,11 +1,27 @@
-import React from "react";
+import React from 'react';
 
-const Footer:React.FC = () => {
+const Footer: React.FC = () => {
   return (
     <footer>
       <ul>
-        <li><a href="https://github.com/ken7253/qkd" target="_blank" rel="noreferrer">GitHub</a></li>
-        <li><a href="https://github.com/ken7253/qkd/issues" target="_blank" rel="noreferrer">Issue</a></li>
+        <li>
+          <a
+            href="https://github.com/ken7253/qkd"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/ken7253/qkd/issues"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Issue
+          </a>
+        </li>
       </ul>
       <small>© ken7253</small>
       <style jsx>{`
@@ -32,6 +48,6 @@ const Footer:React.FC = () => {
       `}</style>
     </footer>
   );
-}
+};
 
 export default Footer;
