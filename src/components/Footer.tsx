@@ -4,8 +4,8 @@ const Footer:React.FC = () => {
   return (
     <footer>
       <ul>
-        <li><a href="https://github.com/ken7253/qkd" target="_blank">GitHub</a></li>
-        <li><a href="https://github.com/ken7253/qkd/issues" target="_blank">Issue</a></li>
+        <li><a href="https://github.com/ken7253/qkd" target="_blank" rel="noreferrer">GitHub</a></li>
+        <li><a href="https://github.com/ken7253/qkd/issues" target="_blank" rel="noreferrer">Issue</a></li>
       </ul>
       <small>© ken7253</small>
       <style jsx>{`
