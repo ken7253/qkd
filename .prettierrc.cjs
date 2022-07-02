@@ -11,5 +11,11 @@ module.exports = {
         tabWidth: 4,
       },
     },
+    {
+      files: '*.yml',
+      options: {
+        singleQuote: false,
+      },
+    },
   ],
 };
