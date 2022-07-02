@@ -1,38 +1,11 @@
 import React, { ChangeEvent, useState, useEffect } from 'react';
-
-type providerList = Provider[];
-
-interface Provider {
-  name: string;
-  displayName?: string;
-  baseURL: string;
-  query: string | 'q=';
-  color?: string;
-}
+import providerList from '../util/providerList';
 
 interface Props {
   onChangeProvider?: (select: URL | undefined) => void;
 }
 
 const SelectProvider: React.FC<Props> = (props: Props) => {
-  const providerList: providerList = [
-    {
-      name: 'mdn',
-      baseURL: 'developer.mozilla.org/ja/search',
-      query: 'q=',
-    },
-    {
-      name: 'zenn',
-      baseURL: 'zenn.dev/search',
-      query: 'q=',
-    },
-    {
-      name: 'qiita',
-      baseURL: 'qiita.com/search',
-      query: 'q=',
-    },
-  ];
-
   const { onChangeProvider } = props;
 
   const URL_SCHEMA = 'https://' as const;
