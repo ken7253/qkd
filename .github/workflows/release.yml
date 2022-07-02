@@ -1,26 +1,29 @@
 name: Release
 
 on:
-  tags: "v*.*.*"
+  push:
+    tags:
+      - "v*.*.*"
 
 jobs:
-  name: Release
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v3
-    - id: packExtensionDir
-      uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
-      with:
-        extensionDir: "."
-        zipFilePath: "build/qkd.zip"
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - id: packExtensionDir
+        uses: cardinalby/webext-buildtools-pack-extension-dir-action@v1
+        with:
+          extensionDir: "."
+          zipFilePath: "build/qkd.zip"
 
-    - uses: cardinalby/webext-buildtools-chrome-crx-action@v2
-      with:
-        zipFilePath: "build/qkd.zip"
-        crxFilePath: "build/qkd.crx"
-        privateKey: ${{ secrets.CHROME_EXTENSION_DEPLOY_KEY }},
+      - uses: cardinalby/webext-buildtools-chrome-crx-action@v2
+        with:
+          zipFilePath: "build/qkd.zip"
+          crxFilePath: "build/qkd.crx"
+          privateKey: ${{ secrets.CHROME_EXTENSION_DEPLOY_KEY }},
 
-    - name: Release
-      uses: softprops/action-gh-release@v1
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
           files: build/qkd.crx
