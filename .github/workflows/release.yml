@@ -31,4 +31,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          files: build/qkd.crx
+          files: |
+            build/qkd.crx
+            build/qkd.zip
+            LICENSE
