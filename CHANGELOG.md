@@ -12,7 +12,7 @@ this project adheres to [Semantic Versioning](http://semver.org/).
 
 - setting for the basic search target.
 
-## [1.0.5] - 2022-07-05
+## [1.0.5] - 2022-07-02
 
 ### Added
 
