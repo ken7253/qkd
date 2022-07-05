@@ -14,7 +14,6 @@ const DocumentSearch: React.FC<Props> = (props: Props) => {
   const changeHandler = (e: ChangeEvent) => {
     if (e.target instanceof HTMLInputElement) {
       const safeText = encodeURI(e.target.value);
-      console.log(word);
       setWord(safeText);
     }
   };
