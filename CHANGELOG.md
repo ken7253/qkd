@@ -1,5 +1,7 @@
 # Change Log
 
+this project adheres to [Semantic Versioning](http://semver.org/).
+
 ## [Unreleased]
 
 ### Changed
