@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DocumentSearch from './DocumentSearch';
 import SelectProvider from './SelectProvider';
+import Configs from './Configs';
 
 const Contents = () => {
   const [url, setURL] = useState<URL | undefined>();
@@ -14,6 +15,7 @@ const Contents = () => {
       <main>
         <DocumentSearch searchURL={url} />
         <SelectProvider onChangeProvider={getURL} />
+        <Configs />
       </main>
       <style jsx>{`
         main {
