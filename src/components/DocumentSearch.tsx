@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 
 interface Props {
-  searchURL: URL | undefined;
+  searchURL?: string;
 }
 
 const DocumentSearch: React.FC<Props> = (props: Props) => {
