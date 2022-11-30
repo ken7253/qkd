@@ -27,8 +27,8 @@ const SelectProvider: React.FC<Props> = (props: Props) => {
             <input
               type="radio"
               name="provider"
-              value={`${item.baseURL}?${item.query}`}
-              defaultChecked={props.url === `${item.baseURL}?${item.query}`}
+              value={item.baseURL}
+              defaultChecked={props.url === item.baseURL}
               onChange={changeHandler}
             ></input>
             <span>{item.displayName || item.name}</span>

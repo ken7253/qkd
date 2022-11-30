@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DocumentSearch from './DocumentSearch';
 import SelectProvider from './SelectProvider';
+import cookie from '../util/cookie';
 
 export type ProviderList = Provider[];
 
@@ -31,12 +32,15 @@ const Contents = () => {
     },
   ];
 
-  const defaultURL = `${providerList[0].baseURL}?${providerList[0].query}`;
+  const defaultURL = providerList[0].baseURL;
+  const lastSelect = cookie.parse(document.cookie).URL;
+  console.log(lastSelect);
+  const [searchURL, setSearchURL] = useState(lastSelect ?? defaultURL);
 
   return (
     <main>
       <DocumentSearch />
-      <SelectProvider items={providerList} url={defaultURL} />
+      <SelectProvider items={providerList} url={searchURL} />
     </main>
   );
 };
