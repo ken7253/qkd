@@ -1,4 +1,6 @@
-type CookieList = { [key: string]: string };
+export interface CookieList {
+  [key: string]: string;
+}
 
 const parse = (rawCookie: string): CookieList => {
   const list = rawCookie.split(';');
