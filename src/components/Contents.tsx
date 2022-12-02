@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import DocumentSearch from './DocumentSearch';
 import SelectProvider from './SelectProvider';
 import cookie from '../util/cookie';
@@ -34,13 +34,20 @@ const Contents = () => {
 
   const defaultURL = providerList[0].baseURL;
   const lastSelect = cookie.parse(document.cookie).URL;
-  console.log(lastSelect);
   const [searchURL, setSearchURL] = useState(lastSelect ?? defaultURL);
+
+  const changeHandler = (url: string) => {
+    setSearchURL(url);
+  };
 
   return (
     <main>
-      <DocumentSearch />
-      <SelectProvider items={providerList} url={searchURL} />
+      <DocumentSearch href={searchURL} />
+      <SelectProvider
+        items={providerList}
+        url={searchURL}
+        update={changeHandler}
+      />
     </main>
   );
 };

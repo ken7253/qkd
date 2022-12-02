@@ -4,6 +4,7 @@ import { type ProviderList } from './Contents';
 interface Props {
   url: string;
   items: ProviderList;
+  update: (url: string) => void;
 }
 
 const SelectProvider: React.FC<Props> = (props: Props) => {
@@ -11,6 +12,7 @@ const SelectProvider: React.FC<Props> = (props: Props) => {
 
   useEffect(() => {
     document.cookie = `URL=${queryURL}`;
+    props.update(queryURL);
   }, [queryURL]);
 
   const changeHandler = (e: ChangeEvent) => {

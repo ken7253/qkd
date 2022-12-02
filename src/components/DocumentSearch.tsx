@@ -1,20 +1,19 @@
 import React, { ChangeEvent, useState } from 'react';
 
 interface Props {
-  searchURL?: string;
+  href: string;
 }
 
 const DocumentSearch: React.FC<Props> = (props: Props) => {
-  const { searchURL } = props;
+  const { href } = props;
 
   const [word, setWord] = useState('');
 
-  const link = searchURL && word ? `${searchURL.toString()}${word}` : undefined;
+  const link = href && word ? `${href}?q=${word}` : undefined;
 
   const changeHandler = (e: ChangeEvent) => {
     if (e.target instanceof HTMLInputElement) {
       const safeText = encodeURI(e.target.value);
-      console.log(word);
       setWord(safeText);
     }
   };
