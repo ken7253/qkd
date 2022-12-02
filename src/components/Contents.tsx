@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DocumentSearch from './DocumentSearch';
 import SelectProvider from './SelectProvider';
+import Settings from './Settings';
 import cookie from '../util/cookie';
 
 export type ProviderList = Provider[];
@@ -48,6 +49,7 @@ const Contents = () => {
         url={searchURL}
         update={changeHandler}
       />
+      <Settings items={providerList}></Settings>
     </main>
   );
 };
