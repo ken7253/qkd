@@ -15,10 +15,9 @@ const SelectProvider: React.FC<Props> = (props: Props) => {
     props.update(queryURL);
   }, [queryURL]);
 
-  const changeHandler = (e: ChangeEvent) => {
-    const element = e.target;
-    if (!(element instanceof HTMLInputElement)) return;
-    setQueryURL(element.value);
+  const providerChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setQueryURL(value);
   };
 
   return (
@@ -31,7 +30,7 @@ const SelectProvider: React.FC<Props> = (props: Props) => {
               name="provider"
               value={item.baseURL}
               defaultChecked={props.url === item.baseURL}
-              onChange={changeHandler}
+              onChange={providerChangeHandler}
             ></input>
             <span>{item.displayName || item.name}</span>
           </label>
