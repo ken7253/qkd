@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import DocumentSearch from './DocumentSearch';
 import SelectProvider from './SelectProvider';
 import cookie from '../util/cookie';
@@ -36,17 +36,22 @@ const Contents = () => {
   const lastSelect = cookie.parse(document.cookie).URL;
   const [searchURL, setSearchURL] = useState(lastSelect ?? defaultURL);
 
-  const changeHandler = (url: string) => {
-    setSearchURL(url);
+  const providerUpdateHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setSearchURL(value);
   };
+
+  useEffect(() => {
+    document.cookie = `URL=${searchURL}`;
+  }, [searchURL]);
 
   return (
     <main>
       <DocumentSearch href={searchURL} />
       <SelectProvider
-        items={providerList}
-        url={searchURL}
-        update={changeHandler}
+        provider={providerList}
+        selected={searchURL}
+        onUpdatedProvider={providerUpdateHandler}
       />
     </main>
   );
