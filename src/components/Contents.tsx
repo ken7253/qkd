@@ -1,7 +1,6 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState, useRef } from 'react';
 import DocumentSearch from './DocumentSearch';
 import SelectProvider from './SelectProvider';
-import cookie from '../util/cookie';
 
 export type ProviderList = Provider[];
 
@@ -32,9 +31,9 @@ const Contents = () => {
     },
   ];
 
-  const defaultURL = providerList[0].baseURL;
-  const lastSelect = cookie.parse(document.cookie).URL;
-  const [searchURL, setSearchURL] = useState(lastSelect ?? defaultURL);
+  const { storage } = chrome;
+  const fallbackURL = providerList[0].baseURL;
+  const [searchURL, setSearchURL] = useState(fallbackURL);
 
   const providerUpdateHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -42,7 +41,9 @@ const Contents = () => {
   };
 
   useEffect(() => {
-    document.cookie = `URL=${searchURL}`;
+    void storage.local.set({
+      lastSelectURL: searchURL,
+    });
   }, [searchURL]);
 
   return (
