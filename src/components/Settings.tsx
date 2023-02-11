@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import type { ProviderList } from './Contents';
 
 interface Props {
@@ -27,6 +27,25 @@ const Settings: React.FC<Props> = (props: Props) => {
     setMemory(value);
   };
 
+  useEffect(() => {
+    const { storage } = chrome;
+    void storage.sync
+      .get('provider')
+      .then((v) => {
+        const typeCheck = typeof v.provider === 'string';
+        setMemory(typeCheck ? (v.provider as string) : 'keep-inactive');
+      })
+      .catch(() => {
+        console.error('failed read sync storage');
+      });
+  }, []);
+
+  useEffect(() => {
+    console.log(memory);
+    const { storage } = chrome;
+    void storage.sync.set({ provider: memory });
+  }, [memory]);
+
   return (
     <div className="settings">
       <details>
@@ -37,9 +56,9 @@ const Settings: React.FC<Props> = (props: Props) => {
           <li className="setting-item">
             <label>
               <span>検索先サイトの保存方法</span>
-              <select onChange={changeHandler}>
+              <select onChange={changeHandler} value={memory}>
                 {providerMemoryType.map((name) => (
-                  <option value={name} key={name} selected={name === memory}>
+                  <option value={name} key={name}>
                     {name}
                   </option>
                 ))}
