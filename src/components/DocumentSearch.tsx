@@ -11,15 +11,16 @@ const DocumentSearch: React.FC<Props> = (props: Props) => {
 
   const link = href && word ? `${href}?q=${word}` : undefined;
 
-  const changeHandler = (e: ChangeEvent) => {
-    if (!(e.target instanceof HTMLInputElement)) return;
-    const safeText = encodeURI(e.target.value);
-    setWord(safeText);
+  const textUpdateHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    const safeText = encodeURI(value);
+    const trimSafeText = safeText.trim();
+    setWord(trimSafeText ?? '');
   };
 
   return (
     <div className="document-search">
-      <input type="search" onChange={(e) => changeHandler(e)} autoFocus></input>
+      <input type="search" onChange={textUpdateHandler} autoFocus></input>
       <a href={link} target="_blank" rel="noreferrer">
         Search
       </a>

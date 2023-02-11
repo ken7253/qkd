@@ -1,37 +1,26 @@
-import React, { ChangeEvent, useState, useEffect } from 'react';
+import React, { ChangeEvent } from 'react';
 import { type ProviderList } from './Contents';
 
 interface Props {
-  url: string;
-  items: ProviderList;
-  update: (url: string) => void;
+  selected: string;
+  provider: ProviderList;
+  onUpdatedProvider: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const SelectProvider: React.FC<Props> = (props: Props) => {
-  const [queryURL, setQueryURL] = useState(props.url);
-
-  useEffect(() => {
-    document.cookie = `URL=${queryURL}`;
-    props.update(queryURL);
-  }, [queryURL]);
-
-  const changeHandler = (e: ChangeEvent) => {
-    const element = e.target;
-    if (!(element instanceof HTMLInputElement)) return;
-    setQueryURL(element.value);
-  };
+  const { onUpdatedProvider, provider, selected } = props;
 
   return (
     <div className="select-provider">
-      {props.items.map((item) => {
+      {provider.map((item) => {
         return (
           <label key={item.name}>
             <input
               type="radio"
               name="provider"
               value={item.baseURL}
-              defaultChecked={props.url === item.baseURL}
-              onChange={changeHandler}
+              defaultChecked={item.baseURL === selected}
+              onChange={onUpdatedProvider}
             ></input>
             <span>{item.displayName || item.name}</span>
           </label>

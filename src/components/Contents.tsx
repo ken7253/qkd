@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useEffect, useState, useRef } from 'react';
 import DocumentSearch from './DocumentSearch';
 import SelectProvider from './SelectProvider';
 import Settings from './Settings';
@@ -33,21 +33,28 @@ const Contents = () => {
     },
   ];
 
-  const defaultURL = providerList[0].baseURL;
-  const lastSelect = cookie.parse(document.cookie).URL;
-  const [searchURL, setSearchURL] = useState(lastSelect ?? defaultURL);
+  const { storage } = chrome;
+  const fallbackURL = providerList[0].baseURL;
+  const [searchURL, setSearchURL] = useState(fallbackURL);
 
-  const changeHandler = (url: string) => {
-    setSearchURL(url);
+  const providerUpdateHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setSearchURL(value);
   };
+
+  useEffect(() => {
+    void storage.local.set({
+      lastSelectURL: searchURL,
+    });
+  }, [searchURL]);
 
   return (
     <main>
       <DocumentSearch href={searchURL} />
       <SelectProvider
-        items={providerList}
-        url={searchURL}
-        update={changeHandler}
+        provider={providerList}
+        selected={searchURL}
+        onUpdatedProvider={providerUpdateHandler}
       />
       <Settings items={providerList}></Settings>
     </main>
