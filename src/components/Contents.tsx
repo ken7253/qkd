@@ -8,33 +8,33 @@ export type ProviderList = Provider[];
 interface Provider {
   name: string;
   displayName?: string;
-  baseURL: string;
-  query: string | 'q=';
-  color?: string;
+  baseURL: `https://${string}`;
+  query: string;
+  color?: `#${string}`;
 }
 
 const Contents = () => {
-  const providerList: ProviderList = [
+  const providerList = [
     {
-      name: 'mdn',
-      baseURL: 'https://developer.mozilla.org/ja/search',
+      name: 'mdn' as const,
+      baseURL: 'https://developer.mozilla.org/ja/search' as const,
       query: 'q=',
     },
     {
-      name: 'zenn',
-      baseURL: 'https://zenn.dev/search',
+      name: 'zenn' as const,
+      baseURL: 'https://zenn.dev/search' as const,
       query: 'q=',
     },
     {
-      name: 'qiita',
-      baseURL: 'https://qiita.com/search',
+      name: 'qiita' as const,
+      baseURL: 'https://qiita.com/search' as const,
       query: 'q=',
     },
-  ];
+  ] satisfies ProviderList;
 
   const { storage } = chrome;
   const fallbackURL = providerList[0].baseURL;
-  const [searchURL, setSearchURL] = useState(fallbackURL);
+  const [searchURL, setSearchURL] = useState<string>(fallbackURL);
 
   const providerUpdateHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
