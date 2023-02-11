@@ -1,8 +1,7 @@
-import React, { ChangeEvent, useEffect, useState, useRef } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import DocumentSearch from './DocumentSearch';
 import SelectProvider from './SelectProvider';
 import Settings from './Settings';
-import cookie from '../util/cookie';
 
 export type ProviderList = Provider[];
 
