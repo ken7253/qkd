@@ -1,18 +1,61 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import DocumentSearch from './DocumentSearch';
 import SelectProvider from './SelectProvider';
+import Settings from './Settings';
+
+export type ProviderList = Provider[];
+
+interface Provider {
+  name: string;
+  displayName?: string;
+  baseURL: `https://${string}`;
+  query: string;
+  color?: `#${string}`;
+}
 
 const Contents = () => {
-  const [url, setURL] = useState<URL | undefined>();
+  const providerList = [
+    {
+      name: 'mdn' as const,
+      baseURL: 'https://developer.mozilla.org/ja/search' as const,
+      query: 'q=',
+    },
+    {
+      name: 'zenn' as const,
+      baseURL: 'https://zenn.dev/search' as const,
+      query: 'q=',
+    },
+    {
+      name: 'qiita' as const,
+      baseURL: 'https://qiita.com/search' as const,
+      query: 'q=',
+    },
+  ] satisfies ProviderList;
 
-  const getURL = (select: URL | undefined) => {
-    setURL(select);
+  const { storage } = chrome;
+  const fallbackURL = providerList[0].baseURL;
+  const [searchURL, setSearchURL] = useState<string>(fallbackURL);
+
+  const providerUpdateHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setSearchURL(value);
   };
+
+  useEffect(() => {
+    void storage.local.set({
+      lastSelectURL: searchURL,
+    });
+  }, [searchURL]);
 
   return (
     <main>
-      <DocumentSearch searchURL={url} />
-      <SelectProvider onChangeProvider={getURL} />
+      <DocumentSearch href={searchURL} />
+      <SelectProvider
+        provider={providerList}
+        selected={searchURL}
+        onUpdatedProvider={providerUpdateHandler}
+      />
+      <Settings items={providerList}></Settings>
     </main>
   );
 };

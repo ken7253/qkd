@@ -14,18 +14,21 @@ const common = {
   module: {
     rules: [
       {
-        test: /\.tsx$/,
+        test: /\.tsx?$/,
         use: [
           {
             loader: 'babel-loader',
           },
-          {loader: 'ts-loader'}
+          { loader: 'ts-loader' },
         ],
         exclude: [/node_modules/],
       },
     ],
   },
-  resolve: { extensions: ['.js', '.ts', '.tsx', '.json'], modules: ['node_modules'] },
+  resolve: {
+    extensions: ['.js', '.ts', '.tsx', '.json'],
+    modules: ['node_modules'],
+  },
 };
 
 export default common;
