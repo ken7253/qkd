@@ -16,17 +16,17 @@ interface Provider {
 const Contents = () => {
   const providerList = [
     {
-      name: 'mdn' as const,
+      name: 'MDN' as const,
       baseURL: 'https://developer.mozilla.org/ja/search' as const,
       query: 'q=',
     },
     {
-      name: 'zenn' as const,
+      name: 'Zenn' as const,
       baseURL: 'https://zenn.dev/search' as const,
       query: 'q=',
     },
     {
-      name: 'qiita' as const,
+      name: 'Qiita' as const,
       baseURL: 'https://qiita.com/search' as const,
       query: 'q=',
     },
