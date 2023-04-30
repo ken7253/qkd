@@ -1,27 +1,26 @@
 import React, { ChangeEvent, useState } from 'react';
 
 interface Props {
-  searchURL: URL | undefined;
+  href: string;
 }
 
 const DocumentSearch: React.FC<Props> = (props: Props) => {
-  const { searchURL } = props;
+  const { href } = props;
 
   const [word, setWord] = useState('');
 
-  const link = searchURL && word ? `${searchURL.toString()}${word}` : undefined;
+  const link = href && word ? `${href}?q=${word}` : undefined;
 
-  const changeHandler = (e: ChangeEvent) => {
-    if (e.target instanceof HTMLInputElement) {
-      const safeText = encodeURI(e.target.value);
-      console.log(word);
-      setWord(safeText);
-    }
+  const textUpdateHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    const safeText = encodeURI(value);
+    const trimSafeText = safeText.trim();
+    setWord(trimSafeText ?? '');
   };
 
   return (
     <div className="document-search">
-      <input type="search" onChange={(e) => changeHandler(e)} autoFocus></input>
+      <input type="search" onChange={textUpdateHandler} autoFocus></input>
       <a href={link} target="_blank" rel="noreferrer">
         Search
       </a>
