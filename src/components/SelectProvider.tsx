@@ -56,14 +56,17 @@ const SelectProvider: React.FC<Props> = (props: Props) => {
           align-items: center;
           width: 100%;
           height: 100%;
-          color: var(--c-theme-light);
+          color: var(--c-lightest);
           border-radius: 5px;
           font-weight: 700;
           background-color: var(--c-theme-main);
         }
+        input:checked + span::before {
+          content: '✔';
+          padding-right: 4px;
+        }
         input:checked + span {
           background-color: var(--c-theme-dark);
-          color: var(--c-theme-light);
         }
       `}</style>
     </div>
