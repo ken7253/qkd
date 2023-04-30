@@ -59,6 +59,8 @@ const SelectProvider: React.FC<Props> = (props: Props) => {
           color: var(--c-lightest);
           border-radius: 5px;
           font-weight: 700;
+          font-size: 1rem;
+          line-height: 1;
           background-color: var(--c-theme-main);
         }
         input:checked + span::before {
